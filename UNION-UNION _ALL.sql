@@ -1,15 +1,15 @@
 ------------------- UNION VE UNION ALL -------------------------
 
---Birden fazla tabloyu tek bir tablo gibi gösterir
---Kolon veri tipleri ayný olmalýdýr.
---Ýkisi arasýndaki fark union veriyi çoklamazken, union all çoklar ve olduðu gibi getirir.
+--Birden fazla tabloyu tek bir tablo gibi gÃ¶sterir
+--Kolon veri tipleri aynÃ½ olmalÃ½dÃ½r.
+--Ãkisi arasÃ½ndaki fark union veriyi Ã§oklamazken, union all Ã§oklar ve olduÃ°u gibi getirir.
 
 --1
 --1 union bunu sadece 1 diye getirir.
 --1
---1 union all bunlarý alt alta tek tek gösterir.
+--1 union all bunlarÃ½ alt alta tek tek gÃ¶sterir.
 
--- ilk select kolonu as olmadan hata verir eðer fiziksel kolon deðilse
+-- ilk select kolonu as olmadan hata verir eÃ°er fiziksel kolon deÃ°ilse
 
 select COUNT(*) from Customers --91
 select COUNT(*) from Employees --9
@@ -29,11 +29,11 @@ select LastName, 'personel' as ad from Employees) musteriler
 group by ad
 
 select Tipad, Region, COUNT(*) toplam_sayi from(
-select CompanyName, 'Müþteri' as Tipad , Region as Region from Customers
+select CompanyName, 'MÃ¼Ã¾teri' as Tipad , Region as Region from Customers
 union
-select LastName, 'Þirket Personeli' , '' as Region from Employees
+select LastName, 'Ãžirket Personeli' , '' as Region from Employees
 union all
-select ad + ' ' + Soyad, 'Dýþ Kaynak' Tipad, '' as Region from PersonelDetay
+select ad + ' ' + Soyad, 'DÃ½Ã¾ Kaynak' Tipad, '' as Region from PersonelDetay
 ) musteriler
 where Region is not null AND Len(Region) > 0
 group by Tipad , Region
